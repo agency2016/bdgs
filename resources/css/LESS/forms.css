@@ -1,0 +1,74 @@
+/* line 3, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\000033}}
+.adbd_input {
+  border-radius: 0;
+  border: 1px solid #979797 !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #fff!important;
+  box-shadow: none !important;
+  height: 27px!important;
+  font-family: Arial, FontAwesome;
+  color: #333333!important;
+}
+/* line 11, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000311}}
+.adbd_input:focus {
+  border: 1px solid #14b3e4 !important;
+}
+/* line 17, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000317}}
+input[type="date"] {
+  border-radius: 0;
+  border: 1px solid #979797 !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #fff!important;
+  box-shadow: none !important;
+  height: 27px!important;
+  font-family: Arial, FontAwesome;
+  color: #333333!important;
+}
+/* line 25, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000325}}
+input[type="date"]:focus {
+  border: 1px solid #14b3e4 !important;
+}
+/* line 31, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000331}}
+textarea {
+  border-radius: 0;
+  border: 1px solid #979797 !important;
+  background-color: #fff!important;
+  box-shadow: none !important;
+  font-family: Arial, FontAwesome;
+  color: #333333!important;
+}
+/* line 38, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000338}}
+textarea:focus {
+  border: 1px solid #14b3e4 !important;
+}
+/* line 44, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000344}}
+.picker__date-display,
+.picker__day--selected,
+.picker__day--selected:hover,
+.picker--focused .picker__day--selected,
+.picker__weekday-display {
+  background-color: #14b3e4 !important;
+}
+/* line 47, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000347}}
+.picker__close,
+.picker__today {
+  color: #14b3e4 !important;
+  font-size: 1.1rem;
+  padding: 0 1rem;
+}
+/* line 52, forms.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/bdgs\/resources\/css\/LESS\/forms\.less}line{font-family:\0000352}}
+.picker__day.picker__day--today {
+  color: #14b3e4 !important;
+}
+/*# sourceMappingURL=forms.css.map */

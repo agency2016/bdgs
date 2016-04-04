@@ -1,0 +1,21 @@
+/* line 4, typo.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/drives\/resources\/css\/LESS\/typo\.less}line{font-family:\000034}}
+body {
+  font-family: Lora, 'Times New Roman', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  background-color: #dddddd;
+  padding-top: 50px;
+}
+/* line 12, typo.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/drives\/resources\/css\/LESS\/typo\.less}line{font-family:\0000312}}
+a {
+  color: #ed6b01;
+}
+/* line 15, typo.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/XAMPP\/xamppfiles\/htdocs\/agencyDelta\/drives\/resources\/css\/LESS\/typo\.less}line{font-family:\0000315}}
+a:hover {
+  color: #ba5401;
+  text-decoration: none;
+}
+/*# sourceMappingURL=typo.css.map */

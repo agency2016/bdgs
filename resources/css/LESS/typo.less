@@ -1,0 +1,26 @@
+@import "variables";
+
+
+body{
+  font-family:@adbd-font;
+  font-size:@adbd-font-size;
+  color:@adbd-font-common-color;
+  background-color: @adbd-full-body-color;
+  
+}
+.btn-contact {
+  .button-variant(#fff; @pink-700; @pink-700);
+  .button-size(5px; 20px; 14; 2; 0px);
+}
+.adbd-link-orange{
+    .link-variant(@adbd-color1);
+}
+.adbd-link-blue{
+    .link-variant(@adbd-color2);
+}
+a{
+    
+    &:hover{
+        text-decoration: none;
+    }
+}
