@@ -10,12 +10,12 @@ class Dashboard extends Bdgs_Controller{
      public function about_us(){
         $data=array();
         $css_js=array();
-        $this->_render_admin('about_us',$data,$css_js);
+        $this->_render_admin('about_us/about_us',$data,$css_js);
     }
      public function analysis(){
         $data=array();
         $css_js=array();
-        $this->_render_admin('analysis',$data,$css_js);
+        $this->_render_admin('analysis/analysis',$data,$css_js);
     }
      public function banner(){
         $data=array();

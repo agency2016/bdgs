@@ -58,3 +58,4 @@ $route['contact'] = 'home/contact';
 $route['privacy'] = 'home/privacy';
 $route['terms'] = 'home/terms';//
 $route['dashboard/about-us']         = 'About_us/about_list'; //edit any user info with user id
+$route['dashboard/analysis']         = 'Analysis/analysis_list'; //edit any user info with user id

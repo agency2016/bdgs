@@ -15,7 +15,7 @@ class About_us extends Bdgs_Controller {
     
         $data['record'] = $this->Bdgs_model->get_all('about_us');
         $css_js_for_home = array();
-        $this->_render_admin('about_us', $data, $css_js_for_home);
+        $this->_render_admin('about_us/about_us', $data, $css_js_for_home);
     }
 
     /*
@@ -24,13 +24,13 @@ class About_us extends Bdgs_Controller {
 
     public function add() {
 
-       
-        $this->form_validation->set_rules('desc', 'Description', 'trim|required');
+       //var_dump($this->input->post());
+        $this->form_validation->set_rules('a_desc', 'Description', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
             echo validation_errors();
         } else {
             
-            $category_desc = ($this->input->post('desc'));
+            $category_desc = ($this->input->post('a_desc'));
             $data = array(
                 
                 'a_desc' => "$category_desc"
@@ -50,24 +50,24 @@ class About_us extends Bdgs_Controller {
 
     public function delete() {
         echo $id = $this->input->post('cat_id');
-        $data['get_insert_id'] = $this->Bdgs_model->delete($id);
+        $data['get_insert_id'] = $this->Bdgs_model->delete('about_us',array('id'=>$id));
         echo "deleted";
     }
 
     public function edit() {
        
-        $this->form_validation->set_rules('desc', 'Description', 'trim|required');
+        $this->form_validation->set_rules('a_desc', 'Description', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
             echo validation_errors();
         } else {
             $property_category_id = $this->input->post('edit_id');
            
-            $category_desc = $this->input->post('desc');
+            $category_desc = $this->input->post('a_desc');
             $data = array(
                 
                 'a_desc' => "$category_desc"
             );
-            $data['get_edit_id'] = $this->Bdgs_model->update('about_us',array('id'=>$property_category_id), $data);
+            $data['get_edit_id'] = $this->Bdgs_model->update('about_us', $data,array('id'=>$property_category_id));
         }
     }
 
