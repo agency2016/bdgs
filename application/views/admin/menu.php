@@ -1,8 +1,10 @@
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<!--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>-->
+<script src="<?php echo base_url('resources/js/tinymce.min.js'); ?>"></script>
+
   <script>
   
   tinymce.init({
-  selector: 'textarea',
+  selector: '.textarea',
   height: 300,
   theme: 'modern',
   plugins: [
@@ -23,15 +25,20 @@
     '//www.tinymce.com/css/codepen.min.css'
   ]
  });
-  
+   $(function () {
+       $('.trumbo').trumbowyg();
+    var dateToday = new Date();
+    $(".datepicker").datepicker({
+    dateFormat: "yy-mm-dd",
+    });
+    });
   </script>
 <div class="nav-side-menu">
-    <div class="brand">Gono songhoti</div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-  
+   
+   
         <div class="menu-list">
   
-            <ul id="menu-content" class="menu-content collapse out">
+            <ul id="li" class="menu-content list list-unstyled">
                 <li>
                   <a href="<?php echo base_url('dashboard')?>">
                   <i class="fa fa-dashboard fa-lg"></i> Dashboard
@@ -47,6 +54,39 @@
                   <i class="fa fa-users fa-lg"></i> Analysis
                   </a>
                 </li>
+                <li>
+                  <a href="<?php echo base_url('Banner/banner_list')?>">
+                    <i class="fa fa-users fa-lg"></i> Banner
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('Centrl/centrl_list')?>">
+                  <i class="fa fa-users fa-lg"></i> Central Committee
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('Constitution/c_list')?>">
+                  <i class="fa fa-users fa-lg"></i> Constitution
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('Contact/c_list')?>">
+                  <i class="fa fa-user fa-lg"></i> Contact Us
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="<?php echo base_url('dashboard/leaflet')?>">
+                  <i class="fa fa-users fa-lg"></i> Leaf let
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('dashboard/postar')?>">
+                  <i class="fa fa-users fa-lg"></i> Poster
+                  </a>
+                </li>
+                
+                
                 <li>
                   <a href="<?php echo base_url('dashboard/users')?>">
                   <i class="fa fa-users fa-lg"></i> Users
@@ -76,42 +116,13 @@
                   <i class="fa fa-user fa-lg"></i> Next Event
                   </a>
                   </li>
-                 <li>
-                  <a href="<?php echo base_url('dashboard/contact_us')?>">
-                  <i class="fa fa-user fa-lg"></i> Contact Us
-                  </a>
-                  </li>
-                  
-                 <li>
-                  <a href="<?php echo base_url('dashboard/leaflet')?>">
-                  <i class="fa fa-users fa-lg"></i> Leaf let
-                  </a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url('dashboard/postar')?>">
-                  <i class="fa fa-users fa-lg"></i> Poster
-                  </a>
-                </li>
+                 
                 <li>
                   <a href="<?php echo base_url('dashboard/donate')?>">
                   <i class="fa fa-users fa-lg"></i> Donate
                   </a>
                 </li>
-                <li>
-                  <a href="<?php echo base_url('dashboard/constitution')?>">
-                  <i class="fa fa-users fa-lg"></i> Constitution
-                  </a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url('dashboard/central_committee')?>">
-                  <i class="fa fa-users fa-lg"></i> Central Committee
-                  </a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url('dashboard/banner')?>">
-                  <i class="fa fa-users fa-lg"></i> Banner
-                  </a>
-                </li>
+              
                
             </ul>
      </div>

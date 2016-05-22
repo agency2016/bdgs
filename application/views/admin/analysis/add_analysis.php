@@ -5,27 +5,27 @@
                 <?php $this->view('admin/menu'); ?>
             </div>
              <div class="col-lg-9 col-md-7 col-sm-8">
-                 <form role="form" id="admin-dashboard-user-add" class='user-add-form' action="<?php echo base_url('dashboard/user/new/'); ?>" method="post">
+                 <form role="form" id="admin-dashboard-analysis-add" class='analysis-add-form' action="<?php echo base_url('analysis/add_analysis/'); ?>" method="post">
 
                  
                     
                         <a class="pull-right" title="Back to List" href="<?php echo base_url('dashboard/analysis')?>"><i class="fa fa-2x fa-arrow-circle-o-left"></i> </a>
                        
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Headline</label>
-                            <input type="text" class="form-control" id="email" required="true" name="email" placeholder="">
+                            <label for="" class="required">Headline</label>
+                            <input type="text" class="form-control" id="headline" required="true" name="headline" placeholder="headline">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Writer</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+                            <label for="" class="required">Writer</label>
+                            <input type="text" class="form-control" id="writer" name="writer" placeholder="writer">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Date</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+                            <label for="" class="required">Date</label>
+                            <input type="text" class="form-control datepicker" id="date" name="date" placeholder="date">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Description</label>
-                            <textarea></textarea>
+                            <label for="" class="required">Description</label>
+                            <textarea name="desc" class="trumbo"></textarea>
                         </div>
                        
                         <button type="submit" class="btn btn-drugbd btn-drugbd-full">Submit</button>
@@ -45,23 +45,23 @@
         return arg != value;
     }, "");
 
-    $('#admin-dashboard-user-add').validate({
+    $('#admin-dashboard-analysis-add').validate({
         ignore: [],
         rules: {
-            full_name_bn: {
+            headline: {
                 required: true
             },
            
-           email: {
+           writer: {
                 required: true
 
             },
-            phone: {
+            desc: {
                 required: true
 
             },
             
-            role: {
+            date: {
                 required: true
             }
         },

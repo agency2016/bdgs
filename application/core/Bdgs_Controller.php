@@ -6,11 +6,11 @@ if (!defined('BASEPATH'))
 class Bdgs_Controller extends CI_Controller {
 
     public $default_load_list = array(
-        'bdgs_css' => array('bootstrap', 'font-awesome','sweetalert','animate','bdgs','slider'),
-        'bdgs_js' => array('jquery-1.9.1.min', 'jquery.validate', 'jquery-ui.min', 'bootstrap','sweetalert.min'),
+        'bdgs_css' => array('bootstrap', 'font-awesome','sweetalert','jquery-ui','animate','bdgs','trumbowyg'),
+        'bdgs_js' => array('jquery-1.9.1.min', 'jquery.validate', 'jquery-ui.min', 'bootstrap','sweetalert.min','trumbowyg'),
         'bdgs_font' => array(),
         'bdgs_css_footer' => array(),
-        'bdgs_js_footer' => array('wow.min','bdgs','slider')
+        'bdgs_js_footer' => array('wow.min','bdgs')
     );
     private $page_data = array();
     private $template_data = array();

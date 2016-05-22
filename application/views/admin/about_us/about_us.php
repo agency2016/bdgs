@@ -50,7 +50,7 @@
                 <div class="modal-body">
                    
                     <div class="form-group">
-                        <textarea id="a_desc_edit" name="a_desc_edit" class="form-control" rows="3"></textarea>
+                        <textarea id="a_desc_edit" name="a_desc_edit" class="form-control textarea" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer ">
@@ -97,7 +97,7 @@
                  
                  <div class="form-group">
                         <label>Description</label>
-                        <textarea name="a_desc" id="a_desc" class="form-control" rows="7"></textarea>
+                        <textarea name="a_desc" id="a_desc" class="form-control textarea" rows="7"></textarea>
                  </div>                       
                     
                 </div>
