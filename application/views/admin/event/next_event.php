@@ -8,8 +8,8 @@
               <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
-                     <h1 class="text-center custom_heading">Banner List </h1>
-                     <a href="<?php echo base_url('Banner/add_banner')?>" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Add New</a>
+                     <h1 class="text-center custom_heading">Poster List </h1>
+                     <a href="<?php echo base_url('Poster/add_poster')?>" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Add New</a>
                 </div>
             </div>
 
@@ -26,18 +26,18 @@
                     <tbody>
                         <?php
                        
-                        foreach ($banner_list as $row):
+                        foreach ($poster_list as $row):
                             ?>
                             <tr>
 
                                 <td><?php echo $row->title; ?></td>
                                
 
-                                <td><?php echo (date("d-M-Y", strtotime($row->b_date))); ?></td>
+                                <td><?php echo (date("d-M-Y", strtotime($row->p_date))); ?></td>
                                  
-                                <td class="action-btn"><a href="<?php echo base_url('Banner/view_banner/' . $row->id); ?>"><button class="btn btn-info btn-xs"><i class="fa fa-user"></i></button></a></td>
+                                <td class="action-btn"><a href="<?php echo base_url('Poster/view_poster/' . $row->id); ?>"><button class="btn btn-info btn-xs"><i class="fa fa-user"></i></button></a></td>
 
-                                <td class="action-btn"><a href="<?php echo base_url('Banner/edit_banner/' . $row->id); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                <td class="action-btn"><a href="<?php echo base_url('Poster/edit_poster/' . $row->id); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
                                 
 
                             </tr>

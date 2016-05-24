@@ -1,7 +1,7 @@
-˙<?php
+<?php
 
-//controller for Leaflet login  logout listing search Leaflet edit , add , delete all Leaflet functions
-class Leaflet extends Bdgs_Controller {
+//controller for Poster login  logout listing search Poster edit , add , delete all Poster functions
+class Poster extends Bdgs_Controller {
 
      private  $js_css_array = array('bdgs_css'=>array('jquery.dataTables.min'),'bdgs_js'=>array('jquery.dataTables.min'));
      public function __construct() {
@@ -13,13 +13,15 @@ class Leaflet extends Bdgs_Controller {
        
        
     }
-    public function add_leaflet() {
+    public function add_poster() {
             
             $data= array();
             if ($this->input->server("REQUEST_METHOD") === "POST") {
-                
+                //var_dump($_FILES);exit;
+               
                 $this->form_validation->set_rules('title',  'Headline', 'trim|required');
-                $this->form_validation->set_rules('l_desc', 'Desc', 'trim|required');
+                $this->form_validation->set_rules('date', 'Date', 'trim|required');
+               
                
                 if ($this->form_validation->run() == false) {
                     
@@ -27,152 +29,40 @@ class Leaflet extends Bdgs_Controller {
                     
                     $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
                     
-                    redirect(base_url('leaflet/add_leaflet'));
+                    redirect(base_url('poster/add_poster'));
                     
                 } else {
                     
                     $data = array(
                         'title'=>$this->input->post('title'),
                         
-                        'l_desc'=>$this->input->post('l_desc'),
+                        'p_date'=>$this->input->post('date'),
                     
                     );
-                    $leaflet_id = $this->Bdgs_model->insert('leaflet',$data);
+                    $poster_id = $this->Bdgs_model->insert('poster',$data);
                     
                    //upload photo
                     $uploaded_data = false;
                    // 
                      
-                    if ($_FILES['leafletimage']['name'] != NULL && $_FILES['leafletimage']['name'] != '') {
+                    if ($_FILES['posterimage']['name'] != NULL && $_FILES['posterimage']['name'] != '') {
                         
-                        $new_name = $_FILES['leafletimage']['name'];
+                        $new_name = $_FILES['posterimage']['name'];
                         
-                        $config['upload_path'] = './upload/leaflet/';
+                        $config['upload_path'] = './upload/poster/';
                        
                         $config['allowed_types'] = 'gif|jpg|png';
                         $config['file_name'] = $new_name;
-                        
+                         //var_dump($config);exit;
                         $this->load->library('upload', $config);
                         
-                        if (!$this->upload->do_upload("leafletimage")) {
+                        if (!$this->upload->do_upload("posterimage")) {
                             $photo_error = $this->upload->display_errors();
                             $data['error'] = $photo_error;
                             $errors = $this->getErrors($photo_error);
                             $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
                             //var_dump($errors);exit;
-                            redirect(base_url('Leaflet/add_leaflet'));
-                            
-                        } else {
-                            $uploaded_data = $this->upload->data();
-                            
-                            $config['image_library'] = 'gd2';
-                            $config['source_image'] = $uploaded_data['full_path'];
-                            
-                            $config_i['new_image'] = './upload/leaflet/';
-                            $this->load->library('image_lib', $config);
-                            $this->image_lib->resize();
-                            $this->Bdgs_model->update('leaflet',array('image'=>  base_url('upload/leaflet/').'/'.$uploaded_data['file_name']),array('id'=>$leaflet_id));
-                        }
-                    }
-                   
-                    redirect(base_url('Leaflet/leaflet_list'));
-                    
-                    
-                }
-                
-            }else{
-                
-                $this->_render_admin('leaflet/add_leaflet', $data);
-            }
-
-        }
-    
-    public function leaflet_list() {
-        
-        $Leaflet_list = $this->Bdgs_model->get_all('leaflet'); 
-        $data['leaflet_list'] = array();
-        
-        if ($Leaflet_list) {
-            $data['leaflet_list'] = $Leaflet_list->result();
-        }
-        $this->_render_admin('leaflet/leaflet', $data);
-    }
-
-    /**
-     * 
-     * @param type $Leaflet_id
-     * view single Leaflet info 
-     */
-    public function view_leaflet($Leaflet_id) {
-
-        
-        if ($Leaflet_data = $this->Bdgs_model->get_by('leaflet',array('id'=>$Leaflet_id))) {
-
-            $data['leaflet_data'] = $Leaflet_data->row();
-
-           
-        } else {
-            $this->session->set_flashdata('error', get_string('not_found'));
-            redirect(base_url('Leaflet/leaflet_list'));
-        }// end of if Leaflet not found
-        
-        $this->_render_admin('Leaflet/view_leaflet', $data);
-    }
-    
-    /**
-     * 
-     * @param type $Leaflet_id
-     * edit a single Leaflet
-     */
-    public function edit_Leaflet($Leaflet_id) {
-        
-        
-            $data= array();
-            if ($this->input->server("REQUEST_METHOD") === "POST") {
-                
-                $this->form_validation->set_rules('title',  'Headline', 'trim|required');
-                $this->form_validation->set_rules('l_desc', 'Desc', 'trim|required');
-               
-               
-                if ($this->form_validation->run() == false) {
-                    
-                    $errors = $this->getErrors(validation_errors());
-                    
-                    $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
-                    //var_dump($errors);exit;
-                    redirect(base_url('Leaflet/edit_leaflet/').'/'.$Leaflet_id);
-                    
-                } else {
-                    
-                    $data = array(
-                        'title'=>$this->input->post('title'),
-                        
-                        'l_desc'=>$this->input->post('l_desc'),
-                    
-                    );
-                     $this->Bdgs_model->update('leaflet',$data,array('id'=>$Leaflet_id));
-                    
-                   //upload photo
-                    $uploaded_data = false;
-                   // 
-                     
-                    if ($_FILES['leafletimage']['name'] != NULL && $_FILES['leafletimage']['name'] != '') {
-                        
-                        $new_name = $_FILES['leafletimage']['name'];
-                        
-                        $config['upload_path'] = './upload/leaflet/';
-                       
-                        $config['allowed_types'] = 'gif|jpg|png';
-                        $config['file_name'] = $new_name;
-                        
-                        $this->load->library('upload', $config);
-                        
-                        if (!$this->upload->do_upload("leafletimage")) {
-                            $photo_error = $this->upload->display_errors();
-                            $data['error'] = $photo_error;
-                            $errors = $this->getErrors($photo_error);
-                            $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
-                            redirect(base_url('Leaflet/edit_leaflet/').'/'.$Leaflet_id);
+                            redirect(base_url('Poster/add_poster'));
                             
                         } else {
                             $uploaded_data = $this->upload->data();
@@ -180,40 +70,152 @@ class Leaflet extends Bdgs_Controller {
                              $config['image_library'] = 'gd2';
                             $config['source_image'] = $uploaded_data['full_path'];
                             
-                            $config_i['new_image'] = './upload/leaflet/';
+                            $config_i['new_image'] = './upload/poster/';
                             $this->load->library('image_lib', $config);
                             $this->image_lib->resize();
-                            $this->Bdgs_model->update('leaflet',array('image'=>  base_url('upload/leaflet/').'/'.$uploaded_data['file_name']),array('id'=>$Leaflet_id));
+                            $this->Bdgs_model->update('poster',array('image'=>  base_url('upload/poster/').'/'.$uploaded_data['file_name']),array('id'=>$poster_id));
                         }
                     }
                    
-                    redirect(base_url('Leaflet/leaflet_list'));
+                    redirect(base_url('Poster/poster_list'));
+                    
+                    
+                }
+                
+            }else{
+                
+                $this->_render_admin('poster/add_poster', $data);
+            }
+
+        }
+    
+    public function poster_list() {
+        
+        $Poster_list = $this->Bdgs_model->get_all('poster'); 
+        $data['poster_list'] = array();
+        
+        if ($Poster_list) {
+            $data['poster_list'] = $Poster_list->result();
+        }
+        $this->_render_admin('poster/poster', $data);
+    }
+
+    /**
+     * 
+     * @param type $Poster_id
+     * view single Poster info 
+     */
+    public function view_poster($Poster_id) {
+
+        
+        if ($Poster_data = $this->Bdgs_model->get_by('poster',array('id'=>$Poster_id))) {
+
+            $data['poster_data'] = $Poster_data->row();
+
+           
+        } else {
+            $this->session->set_flashdata('error', get_string('not_found'));
+            redirect(base_url('Poster/poster_list'));
+        }// end of if Poster not found
+        
+        $this->_render_admin('Poster/view_poster', $data);
+    }
+    
+    /**
+     * 
+     * @param type $Poster_id
+     * edit a single Poster
+     */
+    public function edit_Poster($Poster_id) {
+        
+        
+            $data= array();
+            if ($this->input->server("REQUEST_METHOD") === "POST") {
+                
+                $this->form_validation->set_rules('title',  'Headline', 'trim|required');
+                $this->form_validation->set_rules('date', 'Date', 'trim|required');
+               
+               
+                if ($this->form_validation->run() == false) {
+                    
+                    $errors = $this->getErrors(validation_errors());
+                    
+                    $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
+                    var_dump($errors);exit;
+                    redirect(base_url('Poster/edit_poster/').'/'.$Poster_id);
+                    
+                } else {
+                    
+                    $data = array(
+                        'title'=>$this->input->post('title'),
+                        
+                        'p_date'=>$this->input->post('date'),
+                    
+                    );
+                     $this->Bdgs_model->update('poster',$data,array('id'=>$Poster_id));
+                    
+                   //upload photo
+                    $uploaded_data = false;
+                   // 
+                     
+                    if ($_FILES['posterimage']['name'] != NULL && $_FILES['posterimage']['name'] != '') {
+                        
+                        $new_name = $_FILES['posterimage']['name'];
+                        
+                        $config['upload_path'] = './upload/poster/';
+                       
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['file_name'] = $new_name;
+                        
+                        $this->load->library('upload', $config);
+                        
+                        if (!$this->upload->do_upload("posterimage")) {
+                            $photo_error = $this->upload->display_errors();
+                            $data['error'] = $photo_error;
+                            $errors = $this->getErrors($photo_error);
+                            $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
+                            redirect(base_url('Poster/edit_poster/').'/'.$Poster_id);
+                            
+                        } else {
+                            $uploaded_data = $this->upload->data();
+                            
+                             $config['image_library'] = 'gd2';
+                            $config['source_image'] = $uploaded_data['full_path'];
+                            
+                            $config_i['new_image'] = './upload/poster/';
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+                            $this->Bdgs_model->update('poster',array('image'=>  base_url('upload/poster/').'/'.$uploaded_data['file_name']),array('id'=>$Poster_id));
+                        }
+                    }
+                   
+                    redirect(base_url('Poster/poster_list'));
                    
                 }
             }
             else{
-                 if ($Leaflet_data = $this->Bdgs_model->get_by('leaflet',array('id'=>$Leaflet_id))) {
+                 if ($Poster_data = $this->Bdgs_model->get_by('poster',array('id'=>$Poster_id))) {
 
-                        $data['leaflet_data'] = $Leaflet_data->row();
+                        $data['poster_data'] = $Poster_data->row();
    
                     } else {
                         $this->session->set_flashdata('error', get_string('not_found'));
-                        redirect(base_url('Leaflet/leaflet_list'));
-                    }// end of if Leaflet not found
-                    $this->_render_admin('leaflet/edit_leaflet', $data);
+                        redirect(base_url('Poster/poster_list'));
+                    }// end of if Poster not found
+                    $this->_render_admin('poster/edit_poster', $data);
             }
     }
 
     /**
      * 
-     * @param type $Leaflet_id
+     * @param type $Poster_id
      * admin /non admin change
      */
-    public function change_Leaflet_status($Leaflet_id) {
+    public function change_Poster_status($Poster_id) {
 
-        if ($Leaflet_data = $this->bdgs_model->get_by('Leaflet',array('Leaflet_id'=>$Leaflet_id))) {
+        if ($Poster_data = $this->bdgs_model->get_by('Poster',array('Poster_id'=>$Poster_id))) {
 
-            if ($Leaflet_update = $this->bdgs_model->update('Leaflet', array('is_active' => !($Leaflet_data->row()->is_active)), array('Leaflet_id'=>$Leaflet_id))) {
+            if ($Poster_update = $this->bdgs_model->update('Poster', array('is_active' => !($Poster_data->row()->is_active)), array('Poster_id'=>$Poster_id))) {
 
                 $this->session->set_flashdata('success', get_string('edit_success'));
             } else {
@@ -224,7 +226,7 @@ class Leaflet extends Bdgs_Controller {
 
             $this->session->set_flashdata('error', get_string('not_found'));
         }
-        redirect(base_url('dashboard/Leaflets'));
+        redirect(base_url('dashboard/Posters'));
     }
 
     

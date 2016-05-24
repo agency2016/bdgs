@@ -10,16 +10,16 @@
                        
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="required">Title</label>
-                            <p><?php echo $banner_data->title;?></p>
+                            <p><?php echo $poster_data->title;?></p>
                         </div>
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="required">Date</label>
-                            <p><?php echo $banner_data->b_date;?></p>
+                            <p><?php echo $poster_data->p_date;?></p>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="required">Image</label>
-                            <img src="<?php echo $banner_data->image;?>" />
+                            <img src="<?php echo $poster_data->image;?>" />
                         </div>
                        
                 
