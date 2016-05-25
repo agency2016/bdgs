@@ -1,36 +1,7 @@
-//fb app
-  if (window.location.host == "localhost")
-    {
-        // Do whatever
-        var fbappid = '1764824527084590';
-    }
-    else{
-        //for live
-        var fbappid = '889275307858735';
-    }
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : fbappid,
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
   
   jQuery(document).ready(function(){
-    $('ul.nav li.dropdown').hover(function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
-    }, function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
-    }); 
-    
+   
   //Check to see if the window is top if not then display button
   $(window).scroll(function(){
     if ($(this).scrollTop() > 300) {
@@ -48,13 +19,7 @@
 
 });
 
- wow = new WOW(
-      {
-        animateClass: 'animated',
-        offset:       100
-      }
-    );
-    wow.init();
+
     
   //<![CDATA[
     jQuery(window).load(function() { // makes sure the whole site is loaded

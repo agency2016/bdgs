@@ -1,6 +1,7 @@
 <!--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>-->
 <script src="<?php echo base_url('resources/js/tinymce.min.js'); ?>"></script>
-
+<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+<script src="<?php echo base_url('resources/js/locationpicker.jquery.js') ?>"></script>
   <script>
   
   tinymce.init({
@@ -26,11 +27,66 @@
   ]
  });
    $(function () {
+       
+       
        $('.trumbo').trumbowyg();
-    var dateToday = new Date();
-    $(".datepicker").datepicker({
-    dateFormat: "yy-mm-dd",
-    });
+        var dateToday = new Date();
+        $(".datepicker").datepicker({
+        dateFormat: "yy-mm-dd",
+        });
+        //add more image section
+        
+        $('.image_add_more').click(function(e){
+            e.preventDefault();
+            var count= parseInt($(this).attr('data-count'));
+            count++;
+            $(this).attr('data-count',count);
+            var html = '<div class="e_image_single" data-count="'+count+'">'+
+                                    '<div class="form-group">'+
+                                            '<label for="" class="required">Image</label>'+
+                                            '<input type="file" data-count="'+count+'" name="images[]" id="image_'+count+'"/>'+
+
+                                     '</div>'+
+                                    '<div class="form-group">'+
+                                           ' <label for="" class="required">Title</label>'+
+                                            '<input type="text" data-count="'+count+'" name="titles[]" id="title_'+count+'"/>'+
+
+                                     '</div>'+
+                                    '<div class="form-group">'+
+                                           ' <label for="" class="required">Make this cover image</label>'+
+                                            '<input type="radio" data-count="'+count+'" value="'+count+'" name="cover" id="cover_'+count+'"/>'+
+
+                                     '</div>'+
+                                    
+                                '</div>';
+                 $('.e_image_wrapper').append(html);
+                        
+        });
+        //add more image section
+        $('.video_add_more').click(function(e){
+            e.preventDefault();
+            var count= parseInt($(this).attr('data-count'));
+            count++;
+            $(this).attr('data-count',count);
+            var html = '<div class="e_video_single" data-count="'+count+'">'+
+                                    '<div class="form-group">'+
+                                            '<label for="" class="required">Link</label>'+
+                                            '<input type="text" data-count="'+count+'" name="links[]" id="image_'+count+'"/>'+
+
+                                     '</div>'+
+                                    '<div class="form-group">'+
+                                           ' <label for="" class="required">Title</label>'+
+                                            '<input type="text" data-count="'+count+'" name="v_titles[]" id="title_'+count+'"/>'+
+
+                                     '</div>'+
+                                   
+                                    
+                                '</div>';
+                 $('.e_video_wrapper').append(html);
+                        
+        });
+        //add more image section
+        
     });
   </script>
 <div class="nav-side-menu">

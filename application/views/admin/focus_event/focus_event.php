@@ -1,5 +1,5 @@
-<section id="contentbody" style="padding-top: 20px;"> 
-<div class="container-fluid">
+<section focus_event_id="contentbody" style="padding-top: 20px;"> 
+<div class="container-flufocus_event_id">
         <div class="row">
             <div class="col-md-3">
                 <?php $this->view('admin/menu'); ?>
@@ -8,13 +8,13 @@
               <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
-                     <h1 class="text-center custom_heading">Poster List </h1>
-                     <a href="<?php echo base_url('Poster/add_poster')?>" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Add New</a>
+                     <h1 class="text-center custom_heading">Focus_event List </h1>
+                     <a href="<?php echo base_url('Focus_event/add_focus_event')?>" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Add New</a>
                 </div>
             </div>
 
             <div class="table-responsive">
-                <table id="userListtable" class="table table-bordred table-striped table-responsives">
+                <table focus_event_id="userListtable" class="table table-bordred table-striped table-responsives">
                     <thead>
                     <th><?php echo 'Title' ?></th>
                   
@@ -26,18 +26,18 @@
                     <tbody>
                         <?php
                        
-                        foreach ($poster_list as $row):
+                        foreach ($focus_event_list as $row):
                             ?>
                             <tr>
 
-                                <td><?php echo $row->title; ?></td>
+                                <td><?php echo $row->headline; ?></td>
                                
 
-                                <td><?php echo (date("d-M-Y", strtotime($row->p_date))); ?></td>
+                                <td><?php echo (date("d-M-Y", strtotime($row->event_date))); ?></td>
                                  
-                                <td class="action-btn"><a href="<?php echo base_url('Poster/view_poster/' . $row->id); ?>"><button class="btn btn-info btn-xs"><i class="fa fa-user"></i></button></a></td>
+                                <td class="action-btn"><a href="<?php echo base_url('Focus_event/view_focus_event/' . $row->focus_event_id); ?>"><button class="btn btn-info btn-xs"><i class="fa fa-user"></i></button></a></td>
 
-                                <td class="action-btn"><a href="<?php echo base_url('Poster/edit_poster/' . $row->id); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                <td class="action-btn"><a href="<?php echo base_url('Focus_event/edit_focus_event/' . $row->focus_event_id); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
                                 
 
                             </tr>

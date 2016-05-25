@@ -20,14 +20,15 @@
                             <input type="text" class="form-control datepicker" id="event_date" name="event_date" placeholder="event_date" value="<?php echo $next_event_data->event_date;?>">
                         </div>
                         <div class="form-group">
-                            <label for="" class="required">Location</label>
-                            <input type="text" class="form-control" id="location" name="location" placeholder="location" value="<?php echo $next_event_data->location;?>">
-                        </div>
-                        
-                        <div class="form-group">
                             <label for="" class="required">FB Link</label>
                             <input type="text" class="form-control" id="fb_link" name="fb_link" placeholder="fb_link" value="<?php echo $next_event_data->fb_link;?>">
                         </div>
+                        <div class="form-group">
+                            <label for="" class="required">Location</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="location" value="<?php echo $next_event_data->location;?>">
+                        </div>
+                        <div id="mapbdgs" style="width: 500px; height: 400px;"></div>
+                        
                         
                         <div class="form-group">
                             <label for="" class="required">Lat</label>
@@ -57,6 +58,22 @@
 
 </section>
 <script>
+    $(function(){
+        $('#mapbdgs').locationpicker({
+            location: {latitude: <?php echo (float)$next_event_data->elat; ?>, longitude: <?php echo (float)$next_event_data->elong; ?>},	
+            radius: 300,
+            inputBinding: {
+                    latitudeInput: $('#elat'),
+                    longitudeInput: $('#elong'),
+                    radiusInput: null,
+                    locationNameInput: null       
+            },
+            enableAutocomplete: true,
+            onchanged: function(currentLocation, radius, isMarkerDropped) {
+                    //alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
+            }	
+        });
+    });
     $.validator.addMethod("valueNotEquals", function (value, element, arg) {
         return arg != value;
     }, "");

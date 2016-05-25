@@ -37,47 +37,63 @@ class Focus_event extends Bdgs_Controller {
                         'event_date'=>$this->input->post('event_date'),
                         'elat'=>$this->input->post('elat'),
                         'elong'=>$this->input->post('elong'),
-                        'fb_link'=>$this->input->post('fb_link'),
+                        'sub_headline'=>$this->input->post('sub_headline'),
+                        'event_detail_front'=>$this->input->post('event_detail_front'),
+                        'event_detail_rest'=>$this->input->post('event_detail_rest'),
                     
                     );
                     $focus_event_focus_event_id = $this->Bdgs_model->insert('focus_event',$data);
                     
                    //upload photo
                     $uploaded_data = false;
-                   // 
-                     
-                    if ($_FILES['focus_eventimage']['name'] != NULL && $_FILES['focus_eventimage']['name'] != '') {
-                        
-                        $new_name = $_FILES['focus_eventimage']['name'];
-                        
-                        $config['upload_path'] = './upload/focus_event/';
-                       
-                        $config['allowed_types'] = 'gif|jpg|png';
-                        $config['file_name'] = $new_name;
-                        
-                        $this->load->library('upload', $config);
-                        
-                        if (!$this->upload->do_upload("focus_eventimage")) {
-                            $photo_error = $this->upload->display_errors();
-                            $data['error'] = $photo_error;
-                            $errors = $this->getErrors($photo_error);
-                            $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
-                            //var_dump($errors);exit;
-                            redirect(base_url('Focus_event/add_focus_event'));
-                            
-                        } else {
-                            $uploaded_data = $this->upload->data();
-                            
-                             $config['image_library'] = 'gd2';
-                            $config['source_image'] = $uploaded_data['full_path'];
-                            
-                            $config_i['new_image'] = './upload/focus_event/';
-                            $this->load->library('image_lib', $config);
-                            $this->image_lib->resize();
-                            $this->Bdgs_model->update('focus_event',array('image'=>  base_url('upload/focus_event/').'/'.$uploaded_data['file_name']),array('focus_event_id'=>$focus_event_focus_event_id));
+                   $i = 1;
+                   foreach ($this->input->post('titles') as $key => $value) {
+                        if((int)$this->input->post('cover') == $i){
+                            $cover_image = 1;
                         }
-                    }
-                   
+                        else{
+                            $cover_image = 0;
+                        }
+                        if ($_FILES['images']['name'][$key]!= NULL && $_FILES['images']['name'][$key] != '') {
+
+                         $new_name = $_FILES['images']['name'][$key];
+                         
+                         $config['upload_path'] = './upload/focus_event/';
+
+                         $config['allowed_types'] = 'gif|jpg|png';
+                         $config['file_name'] = $new_name;
+
+                         $this->load->library('upload', $config);
+                            $_FILES['photo']['name'] = $_FILES['images']['name'][$key];
+                            $_FILES['photo']['type'] = $_FILES['images']['type'][$key];
+                            $_FILES['photo']['tmp_name'] = $_FILES['images']['tmp_name'][$key];
+                            $_FILES['photo']['error'] = $_FILES['images']['error'][$key];
+                            $_FILES['photo']['size'] = $_FILES['images']['size'][$key];
+
+                         if (!$this->upload->do_upload('photo')) {
+                             $photo_error = $this->upload->display_errors();
+                             $data['error'] = $photo_error;
+                             $errors = $this->getErrors($photo_error);
+                             $data['error'] = $this->session->set_flashdata('error', implode('<br>', $errors));
+                            
+                             redirect(base_url('Focus_event/add_focus_event'));
+
+                         } else {
+                             $uploaded_data = $this->upload->data();
+
+                             $config['image_library'] = 'gd2';
+                             $config['source_image'] = $uploaded_data['full_path'];
+
+                             $config_i['new_image'] = './upload/focus_event/';
+                             $this->load->library('image_lib', $config);
+                             $this->image_lib->resize();
+                             $this->Bdgs_model->insert('focus_event_image',array('event_image'=>  base_url('upload/focus_event/').'/'.$uploaded_data['file_name'],'focus_event_id'=>$focus_event_focus_event_id,'cover_image'=>$cover_image));
+                         }
+                     }
+                     $i++;
+                   }//foreach
+                    
+                   //exit;
                     redirect(base_url('Focus_event/focus_event_list'));
                     
                     
@@ -112,7 +128,7 @@ class Focus_event extends Bdgs_Controller {
         if ($Focus_event_data = $this->Bdgs_model->get_by('focus_event',array('focus_event_id'=>$focus_event_id))) {
 
             $data['focus_event_data'] = $Focus_event_data->row();
-
+            $data['focus_event_image_data'] = $this->Bdgs_model->get_by('focus_event_image',array('focus_event_id'=>$focus_event_id));
            
         } else {
             $this->session->set_flashdata('error', get_string('not_found'));
@@ -202,6 +218,7 @@ class Focus_event extends Bdgs_Controller {
                  if ($Focus_event_data = $this->Bdgs_model->get_by('focus_event',array('focus_event_id'=>$Focus_event_focus_event_id))) {
 
                         $data['focus_event_data'] = $Focus_event_data->row();
+                        $data['focus_event_image_data'] = $this->Bdgs_model->get_by('focus_event_image',array('focus_event_id'=>$Focus_event_focus_event_id));
    
                     } else {
                         $this->session->set_flashdata('error', get_string('not_found'));
