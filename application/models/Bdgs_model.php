@@ -1,11 +1,9 @@
 <?php
-
 class Bdgs_model extends CI_Model
 {
 
     function __construct()
     {
-
         parent::__construct();
     }
 
@@ -103,5 +101,107 @@ class Bdgs_model extends CI_Model
     }
 
 //common function end
+     public function get_featured_event()
+    {
+        $this->db->select('*');
+        $this->db->from('focus_event');
+        $this->db->join('focus_event_image', 'focus_event.focus_event_id = focus_event_image.focus_event_id');
+        $this->db->order_by('focus_event.focus_event_id', 'desc');
+         $this->db->where('focus_event_image.cover_image', 1);
+
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
+      public function get_latest_next_event()
+    {
+        $this->db->select('*');
+        $this->db->from('next_event');
+        $this->db->order_by('next_event_id', 'desc');
+        $this->db->limit(6);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
+      public function get_latest_event()
+    {
+        $this->db->select('*');
+        $this->db->from('event');
+        $this->db->join('event_image', 'event.event_id = event_image.event_id');
+        //$this->db->join('event_video', 'event.event_id = event_video.event_id');
+        $this->db->where('event_image.cover_image', 1);
+        $this->db->order_by('event.event_id', 'desc');
+        $this->db->limit(3);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
     
+    
+      public function get_all_events_front($number=7,$page=0)
+    {
+        $this->db->select('*');
+        $this->db->from('event');
+        $this->db->join('event_image', 'event.event_id = event_image.event_id');
+        
+        $this->db->where('event_image.cover_image', 1);
+        $this->db->order_by('event.event_id', 'desc');
+        $this->db->limit($number,$page);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
+    
+      public function get_all_focus_events_front($number=5,$page=0)
+    {
+        $this->db->select('*');
+        $this->db->from('focus_event');
+        $this->db->join('focus_event_image', 'focus_event.focus_event_id = focus_event_image.focus_event_id');
+        $this->db->order_by('focus_event.focus_event_id', 'desc');
+        $this->db->where('focus_event_image.cover_image', 1);
+        $this->db->limit($number,$page);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
+      public function get_next_event_front($number=15,$page=0)
+    {
+        $this->db->select('*');
+        $this->db->from('next_event');
+        $this->db->order_by('next_event_id', 'desc');
+        $this->db->limit($number,$page);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
 }

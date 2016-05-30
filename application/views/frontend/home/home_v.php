@@ -10,65 +10,81 @@
             <div class="col-lg-9 col-md-4 col-xs-6">
                 <div class="row">
                     <div class="col-lg-8 image-holder">
-                         <div class="thumbnail-home hvr-ripple-in" href="#">
-                            <img class="img-responsive" src="http://placehold.it/565x420" alt="">
-                            <div class="text-block">
-                                <h1> Headline Headline Headline Headline</h1>
-                                <p>This is a demo test This is a demo testThis is a demo test
-                                    This is a demo test This is a demo testThis is a demo test's
-                                    This is a demo test This is a demo testThis is a demo test's
+                      <?php
+                                $main_id = 0;
+                                 if($event){
+                                     $fdata  = ($event->row());
+                                     $main_id = $fdata->event_id;
 
-                                </p>
-                                <a >Link</a>
+                      ?>
+                       <div class="thumbnail-home" href="#">
+                            <img class="img-responsive" style="height:415px;width:100%" src="<?php echo $fdata->event_image; ?>" alt="">
+                            <div class="text-back">
+                                 <div class="text-block">
+
+                                    <h2> <?php echo $fdata->headline; ?></h2>
+                                  
+
+                                        <p><?php echo $fdata->event_detail_front; ?>
+                                     
+                                </div>
+
                             </div>
+
                          </div>
-                        
+                        <?php }?>
                     </div>
                     <div class="col-lg-4 image-holder">
+                         <?php
+                                 if($featured_event){
+                                     $fdata  = ($featured_event->row());
+                                 
+                              ?>
                          <div class="thumbnail-home" href="#">
-                            <img class="img-responsive" src="http://placehold.it/555x840" alt="">
-                            <div class="text-block">
-                                <h1> Headline Headline Headline Headline</h1>
-                                <p>This is a demo test This is a demo testThis is a demo test
-                                    This is a demo test This is a demo testThis is a demo test's
-                                    This is a demo test This is a demo testThis is a demo test's
-
-                                </p>
-                                <a >Link</a>
+                            <img class="img-responsive" style="width:100%" src="<?php echo $fdata->event_image; ?>" alt="">
+                            <div class="text-back">
+                                 <div class="text">
+                               
+                                    <h2> <?php echo $fdata->headline; ?></h2>
+                               
+                                    
+                                        <p><?php echo $fdata->event_detail_front; ?>
+                                      
+                                </div>
+                                
                             </div>
+
                          </div>
-                        
+                        <?php }?>
                     </div>
                   </div>
                     <div class="row">
+                         <?php
+                                 if($event){
+                                     $fdata  = ($event->result());
+                                     foreach ($fdata as $key => $value) {
+                                        if($value->event_id != $main_id){
+
+                      ?>
                         <div class="col-lg-6 image-holder">
                              <div class="thumbnail-home" href="#">
-                                <img class="img-responsive" src="http://placehold.it/555x350" alt="">
-                                <div class="text-block">
-                                    <h1> Headline Headline Headline Headline</h1>
-                                    <p>This is a demo test This is a demo testThis is a demo test
-                                        This is a demo test This is a demo testThis is a demo test's
-                                        This is a demo test This is a demo testThis is a demo test's
+                                 <img class="img-responsive" style="height:305px;width:100%" src="<?php echo $value->event_image; ?>" alt="">
+                            <div class="text-back">
+                                 <div class="text-block">
 
-                                    </p>
-                                    <a >Link</a>
+                                    <h2> <?php echo $value->headline; ?></h2>
+                                  
+
+                                        <p><?php echo $value->event_detail_front; ?>
+                                    
                                 </div>
+
+                            </div>
+
                              </div>
                             
                         </div>
-                        <div class="col-lg-6 image-holder">
-                             <div class="thumbnail-home" href="#">
-                                <img class="img-responsive" src="http://placehold.it/555x350" alt="">
-                                        <div class="text-block">
-                                            <h1> Headline jknd</h1>
-                                            <p>This is a demo test This is a demo testThis is a demo test
-
-                                            </p>
-                                            <a >Link</a>
-                                        </div>
-                             </div>
-                           
-                        </div>
+                <?php }}}?>
                     </div>
                 
               
@@ -76,18 +92,39 @@
             
             
             <div class="col-lg-3 col-md-4 col-xs-6 image-holder">
-                <div class="thumbnail-home" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x230" alt="">
+                <div class="bs-example">
+                    <div class="panel-group" id="accordion">
+
+                          <?php
+                                $i = 0;
+                                 if($next_event){
+                                     $fdata  = ($next_event->result());
+                                     foreach ($fdata as $key => $value) {
+                                         
+
+                      ?>
+                <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $value->next_event_id; ?>"><?php echo $value->headline; ?></a>
+                                </h4>
+                            </div>
+                            <div id="collapse<?php echo $value->next_event_id; ?>" class="panel-collapse collapse <?php echo ($i ==0)? 'in':'';?>">
+                                <div class="panel-body">
+                                     <img class="img-responsive" style="height:150px;width:100%;" src="<?php echo $value->image; ?>" alt="">
+                                     <p><?php echo $value->event_date; ?></p>   
+                                     <span class="home_location" ><?php echo $value->location; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                 <?php $i++;}}?>
+                     
+
+
+                    </div>
+
                 </div>
-                 <div class="thumbnail-home" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x230" alt="">
-                </div>
-                 <div class="thumbnail-home" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x230" alt="">
-                </div>
-                 <div class="thumbnail-home" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x230" alt="">
-                </div>
+                 
             </div>
             
         </div>

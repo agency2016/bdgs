@@ -49,8 +49,8 @@
             <ul class="nav navbar-nav custom_nav">
                <li class="active"><a href="<?php echo base_url('home')?>">হোম</a></li>              
                
-              <li><a href="#">সাবেক কর্মসূচী</a></li>  
-              <li><a href="#">পরবর্তী কর্মসূচী</a></li>
+              <li><a href="<?php echo base_url('Event/All')?>">সাবেক কর্মসূচী</a></li>  
+              <li><a href="<?php echo base_url('Event/Next')?>">পরবর্তী কর্মসূচী</a></li>
               
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">মিডিয়া <b class="caret"></b></a>
@@ -62,8 +62,8 @@
                 </ul>
               </li>
               
-              <li><a href="#">আমাদের সম্পর্কে</a></li>
-              <li><a href="#">যোগাযোগ করুন</a></li>
+              <li><a href="<?php  echo base_url('Home/about')?>">আমাদের সম্পর্কে</a></li>
+              <li><a href="<?php  echo base_url('Home/contact')?>">যোগাযোগ করুন</a></li>
             </ul>           
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

@@ -8,7 +8,8 @@
 
             <div class="col-md-9">
                 <div class="row">
-
+                    <h1 class="text-center">    গণ সনহতি ড্যাশবোর্ড
+                    </h1>
                 </div>
             </div>
         </div>

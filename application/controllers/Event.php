@@ -256,7 +256,53 @@ class Event extends Bdgs_Controller {
     function check_default($post_string) {
         return $post_string == '0' ? FALSE : TRUE;
     }
-    
+    //frontend 
+    public function All(){
+        $Event_list = $this->Bdgs_model->get_all_events_front(); 
+        $data['event_list'] = array();
+        
+        if ($Event_list) {
+            $data['event_list'] = $Event_list->result();
+        }
+        $Event_list = $this->Bdgs_model->get_all_focus_events_front(); 
+        $data['focus_event_list'] = array();
+        
+        if ($Event_list) {
+            $data['focus_event_list'] = $Event_list->result();
+        }
+        $this->_render('events/list', $data);
+        
+    }
+    public function Next(){
+        $Event_list = $this->Bdgs_model->get_next_event_front(); 
+        $data['event_list'] = array();
+        
+        if ($Event_list) {
+            $data['event_list'] = $Event_list->result();
+        }
+        $this->_render('events/next_list', $data);
+    }
+    /**
+     * 
+     * @param type $Event_event_id
+     * view single Event info 
+     */
+    public function detail($event_id) {
+
+        
+        if ($Event_data = $this->Bdgs_model->get_by('event',array('event_id'=>$event_id))) {
+
+            $data['event_data'] = $Event_data->row();
+            $data['event_image_data'] = $this->Bdgs_model->get_by('event_image',array('event_id'=>$event_id));
+            $data['event_video_data'] = $this->Bdgs_model->get_by('event_video',array('event_id'=>$event_id));
+           
+        } else {
+            $this->session->set_flashdata('error', get_string('not_found'));
+            redirect(base_url('Event/event_list'));
+        }// end of if Event not found
+        
+        $this->_render('events/single', $data);
+    }
 }
 // end of class
 ?>

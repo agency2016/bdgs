@@ -7,7 +7,7 @@
             
             <div class="col-md-9">
 
-                <h1 class="text-center custom_heading">About Us</h1>
+                <h1 class="text-center custom_heading">আমাদের সম্পর্কে</h1>
                 <?php if(!$record) {?>
                     <button class="btn btn-primary" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span> Add About Us</button>
                 <?php }?>
@@ -22,8 +22,8 @@
                             <?php if($record) {foreach ($record->result() as $result) { ?>
                                 <tr>
                                     <td class="desc<?php echo $result->id; ?>"><div id="desc<?php echo $result->id; ?>"><?php echo $result->a_desc; ?></div></td>
-                                   <td><button onclick="update_item(<?php echo $result->id; ?>)" class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-edit"></span> Edit</button></td>
-                                    <td><button onclick="delete_item(<?php echo $result->id; ?>)" value="<?php echo $result->id; ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+                                   <td><button onclick="update_item(<?php echo $result->id; ?>)" class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-edit"></span> সম্পাদন করুন</button></td>
+                                    <td><button onclick="delete_item(<?php echo $result->id; ?>)" value="<?php echo $result->id; ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> মুছুন</button></td>
                                 </tr>
                             <?php } }?>
                         </tbody>
@@ -118,8 +118,8 @@
     function add_aboutus() {
        
         var user_data = {
-            
-            a_desc: tinyMCE.get('a_desc').getContent(),
+            a_desc:$('#a_desc').val()
+           // a_desc: tinyMCE.get('a_desc').getContent(),
         };
         $.ajax({
             type: 'POST',
@@ -162,17 +162,20 @@
 
     function update_item(item) {
       
+       
+       // console.log($('#desc'+item).html());
+        $("#a_desc_edit").html( $('#desc'+item).html());
+        $("#a_desc_edit").trumbowyg('html',$('#desc'+item).html());
         $('#edit').modal('show');
-        
-        document.getElementById("a_desc_edit").innerHTML = document.getElementById('desc'+item).innerHTML;
-        tinyMCE.get('a_desc_edit').setContent(document.getElementById('desc'+item).innerHTML);
+       /// tinyMCE.get('a_desc_edit').setContent(document.getElementById('desc'+item).innerHTML);
 
 
     
         $('#update_confirm_click').click(function () {
             var user_data = {
                 edit_id: item,
-                a_desc: tinyMCE.get('a_desc_edit').getContent()
+                a_desc:$('#a_desc_edit').val()
+               // a_desc: tinyMCE.get('a_desc_edit').getContent()
             };
             $.ajax({
                 type: 'POST',

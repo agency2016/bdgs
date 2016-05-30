@@ -119,7 +119,7 @@
        
         var user_data = {
             
-            c_desc: tinyMCE.get('a_desc').getContent(),
+            c_desc: $('#a_desc').val()
         };
         $.ajax({
             type: 'POST',
@@ -161,18 +161,21 @@
     }
 
     function update_item(item) {
-      
+
+        $("#a_desc_edit").html( $('#desc'+item).html());
+        $("#a_desc_edit").trumbowyg('html',$('#desc'+item).html());
         $('#edit').modal('show');
+       // $('#edit').modal('show');
         
-        document.getElementById("a_desc_edit").innerHTML = document.getElementById('desc'+item).innerHTML;
-        tinyMCE.get('a_desc_edit').setContent(document.getElementById('desc'+item).innerHTML);
+        //document.getElementById("a_desc_edit").innerHTML = document.getElementById('desc'+item).innerHTML;
+        //tinyMCE.get('a_desc_edit').setContent(document.getElementById('desc'+item).innerHTML);
 
 
     
         $('#update_confirm_click').click(function () {
             var user_data = {
                 edit_id: item,
-                c_desc: tinyMCE.get('a_desc_edit').getContent()
+                c_desc:$('#a_desc_edit').val()
             };
             $.ajax({
                 type: 'POST',

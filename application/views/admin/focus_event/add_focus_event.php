@@ -56,7 +56,7 @@
                         
                          <div class="form-group">
                             <label for="" class="required">Event Detail Front</label>
-                            <textarea  class="trumbo" id="event_detail_front" name="event_detail_front" placeholder="event_detail_front"></textarea>
+                            <textarea  class="" id="event_detail_front" name="event_detail_front" placeholder="event_detail_front"></textarea>
                         </div>
                         
                          <div class="form-group">
