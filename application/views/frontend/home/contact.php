@@ -17,7 +17,7 @@
                </div>
            </div>
 
-            <div class="col-md-10 col-md-offset-1 about-con">
+            <div class="col-md-10 col-md-offset-1 about-con" style="background-color: white;">
                 <div class="row">
                     <div class="col-md-6" style="padding:30px;border-right:2px dotted #ddd;">
                                <form id="contact-form" name="contact_form" class="form-horizontal" method="post"
@@ -48,7 +48,7 @@
                 </form>
                     </div>
                     <div class="col-md-6">
-                         <p><?php if ($contact) echo $contact->row()->c_desc ;?></p>
+                        <p class="text-center"><?php if ($contact) echo $contact->row()->c_desc ;?></p>
                     </div>
 
                    

@@ -26,6 +26,7 @@ class Home extends Bdgs_Controller{
      public function about() {
        //  var_dump('i am here');
         $data ['about'] = $this->Bdgs_model->get_all('about_us');
+        $data ['con'] = $this->Bdgs_model->get_all('constitution');
         $this->_render('home/about',$data);
     }
 

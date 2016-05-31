@@ -7,9 +7,9 @@
             
             <div class="col-md-9">
 
-                <h1 class="text-center custom_heading">আমাদের সম্পর্কে</h1>
+                <h1 class="text-center custom_heading">ঘোষণাপত্র</h1>
                 <?php if(!$record) {?>
-                    <button class="btn btn-primary" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span> Add About Us</button>
+                    <button class="btn btn-primary" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span> ঘোষণাপত্র যোগ</button>
                 <?php }?>
                 <div class="table-responsive">
                     <table id="statetable" class="table table-bordred table-striped">

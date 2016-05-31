@@ -71,6 +71,7 @@
             color: #000;
             background-color: #fafaf9;
             overflow-x:hidden;
+            text-align:justify;
             
 
         }
@@ -332,7 +333,7 @@ a.socialIcon:hover, .socialHoverClass {
     font-size: 3em;
 }
 .about-con{
-    background-color: white;
+    
     border-top:4px solid #203558;
     padding: 10px;
    

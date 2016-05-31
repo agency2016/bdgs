@@ -103,7 +103,7 @@
                 </li>
                 <li>
                       <a href="<?php echo base_url('dashboard/about-us')?>">
-                  <i class="fa fa-lg fa-smile-o"></i> ামাদের সম্পর্কে
+                  <i class="fa fa-lg fa-microphone"></i>ঘোষণাপত্র
                   </a>
                   </li>
                  <li>

@@ -1,11 +1,9 @@
 <!-- Page Content -->
     <div class="container">
 
-        <div class="row">
+        <div class="row" style="margin-top: 30px;">
 
-            <div class="col-lg-12">
-                <h1 class="page-header">Thumbnail Gallery</h1>
-            </div>
+           
             
             <div class="col-lg-9 col-md-4 col-xs-6">
                 <div class="row">
