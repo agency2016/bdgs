@@ -23,9 +23,20 @@
                             <label for="" class="required">FB Link</label>
                             <input type="text" class="form-control" id="fb_link" name="fb_link" placeholder="fb_link" value="<?php echo $next_event_data->fb_link;?>">
                         </div>
+                        
                         <div class="form-group">
                             <label for="" class="required">Location</label>
                             <input type="text" class="form-control" id="location" name="location" placeholder="location" value="<?php echo $next_event_data->location;?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="required"> Detail </label>
+                            <textarea  class="trumbo" id="event_detail_rest" name="content" placeholder="event_detail_rest"><?php echo $next_event_data->content;?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="required">Image</label>
+                            <img src="<?php echo $next_event_data->image;?>" />
+                            <input type="file" name="next_eventimage" id="next_eventimage"/>
+                                              
                         </div>
                         <div id="mapbdgs" style="width: 500px; height: 400px;"></div>
                         
@@ -38,12 +49,7 @@
                             <label for="" class="required">Long</label>
                             <input type="text" class="form-control" id="elong" name="elong" placeholder="elong" value="<?php echo $next_event_data->elong;?>">
                         </div>
-                        <div class="form-group">
-                            <label for="" class="required">Image</label>
-                            <img src="<?php echo $next_event_data->image;?>" />
-                            <input type="file" name="next_eventimage" id="next_eventimage"/>
-                                              
-                        </div>
+                        
                        
                         <button type="submit" class="btn btn-drugbd btn-drugbd-full">Submit</button>
 

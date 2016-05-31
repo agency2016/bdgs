@@ -38,6 +38,7 @@ class Next_event extends Bdgs_Controller {
                         'elat'=>$this->input->post('elat'),
                         'elong'=>$this->input->post('elong'),
                         'fb_link'=>$this->input->post('fb_link'),
+                        'content'=>$this->input->post('content'),
                     
                     );
                     $next_event_next_event_id = $this->Bdgs_model->insert('next_event',$data);
@@ -155,6 +156,7 @@ class Next_event extends Bdgs_Controller {
                         'elat'=>$this->input->post('elat'),
                         'elong'=>$this->input->post('elong'),
                         'fb_link'=>$this->input->post('fb_link'),
+                        'content'=>$this->input->post('content'),
                     
                     );
                      $this->Bdgs_model->update('next_event',$data,array('next_event_id'=>$Next_event_next_event_id));

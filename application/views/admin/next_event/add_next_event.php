@@ -29,6 +29,16 @@
                             <input type="text" class="form-control" id="location" name="location" placeholder="location">
                         </div>
                         
+                        <div class="form-group">
+                            <label for="" class="required"> Detail </label>
+                            <textarea  class="trumbo" id="event_detail_rest" name="content" placeholder="event_detail_rest"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="" class="required">Image</label>
+                            <input type="file" name="next_eventimage" id="next_eventimage"/>
+                                              
+                        </div>
                         
                         <div id="mapbdgs" style="width: 500px; height: 400px;"></div>	
                         <div class="form-group">
@@ -39,11 +49,7 @@
                             <label for="" class="required">Long</label>
                             <input type="text" class="form-control" id="elong" name="elong" placeholder="elong">
                         </div>
-                        <div class="form-group">
-                            <label for="" class="required">Image</label>
-                            <input type="file" name="next_eventimage" id="next_eventimage"/>
-                                              
-                        </div>
+                        
                        
                         <button type="submit" class="btn btn-drugbd btn-drugbd-full">Submit</button>
 
