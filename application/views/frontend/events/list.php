@@ -64,7 +64,11 @@
                            
                         }
                         echo '</div><div class="row">';
-                        foreach ($event_list as $key => $value) {
+                         $sliced_array = array_slice($event_list, 0, 4);
+                        foreach ($sliced_array as $key => $value) {
+                            $i++;
+                            array_shift($event_list);
+                      
                             
                             ?>
                                     <div class=" col-sm-6 col-md-3 col-lg-3">
@@ -107,11 +111,11 @@
                  <div class=" col-sm-6 col-md-6 col-lg-6">
                     <?php
                     $i = 0;
-                    if ($focus_event_list) {
-                        $sliced_array = array_slice($focus_event_list, 0, 4);
+                    if ($event_list) {
+                        $sliced_array = array_slice($event_list, 0, 4);
                         foreach ($sliced_array as $key => $value) {
                             $i++;
-                            array_shift($focus_event_list);
+                            array_shift($event_list);
                             
                                 ?>
                                    
@@ -145,7 +149,7 @@
                          
                         }
                         echo '</div>';
-                        foreach ($focus_event_list as $key => $value) {
+                        foreach ($event_list as $key => $value) {
                             
                             ?>
                                    <div class=" col-sm-6 col-md-6 col-lg-6">

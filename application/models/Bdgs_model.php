@@ -122,8 +122,9 @@ class Bdgs_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('next_event');
-        $this->db->order_by('next_event_id', 'desc');
-        $this->db->limit(6);
+         $this->db->where('event_date >=', date('y-m-d'));
+        $this->db->order_by('event_date', 'asc');
+        $this->db->limit(3);
 
         $query = $this->db->get();
 
@@ -153,7 +154,7 @@ class Bdgs_model extends CI_Model
     }
     
     
-      public function get_all_events_front($number=7,$page=0)
+      public function get_all_events_front($number=12,$page=0)
     {
         $this->db->select('*');
         $this->db->from('event');

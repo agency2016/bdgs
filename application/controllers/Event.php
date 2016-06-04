@@ -293,7 +293,7 @@ class Event extends Bdgs_Controller {
         if ($Event_data = $this->Bdgs_model->get_by('event',array('event_id'=>$event_id))) {
 
             $data['event_data'] = $Event_data->row();
-            $data['event_image_data'] = $this->Bdgs_model->get_by('event_image',array('event_id'=>$event_id));
+            $data['focus_event_image_data'] = $this->Bdgs_model->get_by('event_image',array('event_id'=>$event_id));
             $data['event_video_data'] = $this->Bdgs_model->get_by('event_video',array('event_id'=>$event_id));
            
         } else {

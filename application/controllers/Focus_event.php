@@ -256,6 +256,21 @@ class Focus_event extends Bdgs_Controller {
     function check_default($post_string) {
         return $post_string == '0' ? FALSE : TRUE;
     }
+    public function detail($focus_event_id) {
+
+
+        if ($Focus_event_data = $this->Bdgs_model->get_by('focus_event',array('focus_event_id'=>$focus_event_id))) {
+
+            $data['focus_event_data'] = $Focus_event_data->row();
+            $data['focus_event_image_data'] = $this->Bdgs_model->get_by('focus_event_image',array('focus_event_id'=>$focus_event_id));
+
+        } else {
+            $this->session->set_flashdata('error', get_string('not_found'));
+            redirect(base_url('home'));
+        }// end of if Focus_event not found
+
+        $this->_render('events/single_focus', $data);
+    }
     
 }
 // end of class

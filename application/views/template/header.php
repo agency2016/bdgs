@@ -1,4 +1,3 @@
-
 <div id="preloader">
   <div id="status">&nbsp;</div>
 </div>
@@ -50,7 +49,7 @@
                <li class="active"><a href="<?php echo base_url('home')?>">হোম</a></li>              
                
               <li><a href="<?php echo base_url('Event/All')?>">সাবেক কর্মসূচী</a></li>  
-              <li><a href="<?php echo base_url('Event/Next')?>">পরবর্তী কর্মসূচী</a></li>
+              <li><a href="#">পরবর্তী কর্মসূচী</a></li>
               
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">মিডিয়া <b class="caret"></b></a>

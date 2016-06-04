@@ -1,7 +1,7 @@
 
   
   jQuery(document).ready(function(){
-   
+   $(".navbar-collapse").css({ maxHeight: $(window).height() - $(".navbar-header").height() + "px" });
   //Check to see if the window is top if not then display button
   $(window).scroll(function(){
     if ($(this).scrollTop() > 300) {
