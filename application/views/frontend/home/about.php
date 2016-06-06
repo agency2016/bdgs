@@ -15,7 +15,7 @@
 <div class="container-fluid bredcram">
     <div class="row">
         <div class="col-md-12">
-           হোম > আমাদের সম্পর্কে
+            হোম <i class="fa fa-arrow-circle-o-right"></i> আমাদের সম্পর্কে
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
                                       <div role="tabpanel" class="tab-pane twocol" id="profile">
                                        <?php if ($con) echo $con->row()->c_desc ;?>
                                       </div>
-                                  </div>
+                                     </div>
                 </div>
             </div>
         </div>

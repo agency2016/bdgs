@@ -287,7 +287,7 @@ class Event extends Bdgs_Controller {
      * @param type $Event_event_id
      * view single Event info 
      */
-    public function detail($event_id) {
+    public function detail($event_id , $title) {
 
         
         if ($Event_data = $this->Bdgs_model->get_by('event',array('event_id'=>$event_id))) {

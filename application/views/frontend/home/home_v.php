@@ -13,7 +13,7 @@
                                      $main_id = $fdata->event_id;
 
                       ?>
-                       <a href="<?php  echo base_url('Event/detail/'.$fdata->event_id)?>" class="home_link">
+                       <a href="<?php  echo base_url('Event/detail/'.$fdata->event_id.'/'.  url_title($fdata->headline))?>" class="home_link">
                        <div class="thumbnail-home" href="#">
                             <img class="img-responsive" style="height:auto;width:100%" src="<?php echo $fdata->event_image; ?>" alt="">
                             <div class="text-back">
@@ -37,7 +37,7 @@
                                      $fdata  = ($featured_event->row());
                                  
                               ?>
-                         <a href="<?php  echo base_url('Focus_event/detail/'.$fdata->focus_event_id)?>" class="home_link">
+                         <a href="<?php  echo base_url('Focus_event/detail/'.$fdata->focus_event_id.'/'.  url_title($fdata->headline))?>" class="home_link">
                          <div class="thumbnail-home" href="#">
                             <img class="img-responsive" style="width:100%" src="<?php echo $fdata->event_image; ?>" alt="">
                             <div class="text-back">
@@ -63,7 +63,7 @@
 
                       ?>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 image-holder">
-                           <a href="<?php  echo base_url('Event/detail/'.$value->event_id)?>" class="home_link">
+                           <a href="<?php  echo base_url('Event/detail/'.$value->event_id.'/'.  url_title($value->headline))?>" class="home_link">
                              <div class="thumbnail-home" href="#">
                                  <img class="img-responsive" style="height:auto;width:100%" src="<?php echo $value->event_image; ?>" alt="">
                             <div class="text-back">
@@ -110,7 +110,7 @@
                                 <div class="panel-body">
                                      <img class="img-responsive" style="height:auto;width:100%;" src="<?php echo $value->image; ?>" alt="">
                                      <br/>
-                                     <p><?php echo reverse_date($value->event_date);  echo '  ' .reverse_t($value->event_date);?></p>
+                                     <p><?php echo reverse_date($value->event_date); ?></p>
                                      <p><?php echo strip_tags(mb_substr($value->content,0,322, "utf-8"))  ; ?></p>
                                      <span class="home_location" ><?php echo $value->location; ?></span>
                                 </div>

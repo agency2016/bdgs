@@ -27,7 +27,7 @@
                 }
                 .focus_event .thumbnail-home{
                     border: 1px solid  #ef5350;
-                    margin-10px;
+                   
                     padding:10px;
                 }
         }
@@ -46,7 +46,7 @@
                 }
                 .focus_event .thumbnail-home{
                     border: 1px solid  #ef5350;
-                    margin-10px;
+                   
                     padding:10px;
                 }
                 
@@ -95,7 +95,7 @@
             font-family: 'blok-italic';
             font-size: 1.5em;
             color: #000;
-            background-color: #fafaf9;
+            background-color: #f1f1f1;
             overflow-x:hidden;
             text-align:justify;
             overflow-y:scroll;
@@ -349,10 +349,11 @@ a.socialIcon:hover, .socialHoverClass {
 .bredcram{
     height:50px;
     line-height: 50px;
-    background: #7f9494 none repeat scroll 0 0;
+    background: rgba(0,0,0,.1) none repeat scroll 0 0;
     color:white;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 1.2em;
+    box-shadow:1px;
 }
 .about-w{
     background-image: url('../images/images.png');

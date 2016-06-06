@@ -256,7 +256,7 @@ class Focus_event extends Bdgs_Controller {
     function check_default($post_string) {
         return $post_string == '0' ? FALSE : TRUE;
     }
-    public function detail($focus_event_id) {
+    public function detail($focus_event_id ,$title) {
 
 
         if ($Focus_event_data = $this->Bdgs_model->get_by('focus_event',array('focus_event_id'=>$focus_event_id))) {

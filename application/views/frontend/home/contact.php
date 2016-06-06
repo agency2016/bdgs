@@ -1,7 +1,7 @@
 <div class="container-fluid bredcram">
     <div class="row">
         <div class="col-md-12">
-           হোম > যোগাযোগ করুন        </div>
+            হোম <i class="fa fa-arrow-circle-o-right"></i> যোগাযোগ করুন        </div>
     </div>
 </div>
 <div class="container-fluid about-w">
