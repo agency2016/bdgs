@@ -108,7 +108,7 @@
           </div>
           <div class=" col-sm-12 col-md-10 col-lg-10">
               <div class="row">
-                 <div class=" col-sm-6 col-md-6 col-lg-6">
+                 <div class=" col-sm-6 col-xs-12 col-md-6 col-lg-6">
                     <?php
                     $i = 0;
                     if ($event_list) {
@@ -120,14 +120,16 @@
                                 ?>
                                    
                                              <!--                                    single div-->
-                                             <div class="row">
+                                             <div class="row" style="margin-bottom: 10px;">
                                                  <div class=" col-sm-4 col-md-4 col-lg-4" style="padding-right: 0px;">
-                                                     <img class="img-responsive" style="width:100%;height:100px;" src="<?php echo $value->event_image; ?>" alt="">
+                                                    <a class="thumbnail-event home_link" href="<?php  echo base_url('Event/detail/'.$value->event_id.'/'.  url_title($value->headline))?>">
+                                                     <img class="img-responsive" style="width:100%;height:100px" src="<?php echo $value->event_image; ?>" alt="">
+                                                    </a>
                                                  </div>
                                                  <div class=" col-sm-8 col-md-8 col-lg-8" style="padding-left: 0px;">
-                                                     <div class="thumbnail-event" href="#">
+                                                     <a class="thumbnail-event home_link" href="<?php  echo base_url('Event/detail/'.$value->event_id.'/'.  url_title($value->headline))?>">
                                         
-                                                            <div class="text-back">
+                                                         <div class="text-back" style="background-color: #f1f1f1;height: 100px;">
                                                                  <div class="text">
 
                                                                     <h4> <?php echo strip_tags(substr($value->headline, 0, 100)); ?></h4>
@@ -137,7 +139,7 @@
 
                                                             </div>
 
-                                                         </div>
+                                                         </a>
                                                  </div>
                                                  
                                              </div>
@@ -152,21 +154,21 @@
                         foreach ($event_list as $key => $value) {
                             
                             ?>
-                                   <div class=" col-sm-6 col-md-6 col-lg-6">
+                                   <div class=" col-sm-6 col-md-6 col-lg-6 hvr-bounce-in" >
                                          <!--                                    single div-->
-                                    <div class="thumbnail-event" href="#">
-                                        <img class="img-responsive" style="width:100%;height:350px;" src="<?php echo $value->event_image; ?>" alt="">
-                                        <div class="text-back">
+                                    <a class="thumbnail-event home_link" href="<?php  echo base_url('Event/detail/'.$value->event_id.'/'.  url_title($value->headline))?>">
+                                        <img class="img-responsive" style="width:100%;height:auto;" src="<?php echo $value->event_image; ?>" alt="">
+                                        <div class="text-back" style="background-color: #f1f1f1;">
                                              <div class="text">
 
                                                 <h2> <?php echo $value->headline; ?></h2>
-                                                <p><?php echo $value->event_detail_front; ?>
+                                                <p><?php echo strip_tags(mb_substr($value->event_detail_front,0,252, "utf-8"))  ;  ?>
 
                                             </div>
 
                                         </div>
 
-                                     </div>
+                                     </a>
 <!--                                    single div-->
                                             
                                     </div>
