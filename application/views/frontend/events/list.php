@@ -4,9 +4,9 @@
         <div class="row wrapper_events">
         <!-- start left bar content -->
         <div class="col-sm-12 col-md-2 col-lg-2">
-            
+           
         </div>
-          <div class=" col-sm-12 col-md-10 col-lg-10">
+        <div class=" col-sm-12 col-md-10 col-lg-10" style="">
             <div class="row">
                 
                     <?php
@@ -18,23 +18,24 @@
                             array_shift($event_list);
                             if($i ==  2){
                                 ?>
-                                <div class=" col-sm-6 col-md-6 col-lg-6">
-                                    <!--                                    single div-->
-                                    <div class="thumbnail-event" href="#">
-                                        <img class="img-responsive" style="width:100%;height:300px;" src="<?php echo $value->event_image; ?>" alt="">
-                                        <div class="text-back">
+                                <div class=" col-sm-6 col-md-6 col-lg-6" style="">
+                                   
+                                   <a class="home_link" href="<?php  echo base_url('Event/detail/'.$value->event_id.'/'.  url_title($value->headline))?>">
+                                       <div class="thumbnail-event " style="border-top:1px solid orange;border-left:1px solid #dddddd;border-right:1px solid #dddddd;"> 
+                                       <img class="img-responsive" style="width:100%;height:auto;" src="<?php echo $value->event_image; ?>" alt="">
+                                        <div class="text-back" style="">
                                              <div class="text">
 
                                                 <h2> <?php echo $value->headline; ?></h2>
-                                                <p><?php echo strip_tags(substr($value->event_detail_front, 0, 600)); ?></p>
+                                                <p><?php echo strip_tags(mb_substr($value->event_detail_front,0,400, "utf-8")); ?></p>
 
                                             </div>
 
                                         </div>
-
-                                     </div>
+                                       </div>
+                                     </a>
 <!--                                    single div-->
-
+                                   
                                 </div>
                                 <?php
                             }
@@ -42,19 +43,20 @@
                                 ?>
                                     <div class=" col-sm-3 col-md-3 col-lg-3">
                                              <!--                                    single div-->
-                                    <div class="thumbnail-event" href="#">
-                                        <img class="img-responsive" style="width:100%;height:150px;" src="<?php echo $value->event_image; ?>" alt="">
-                                        <div class="text-back">
-                                             <div class="text">
+                                    <a class="home_link" href="<?php  echo base_url('Event/detail/'.$value->event_id.'/'.  url_title($value->headline))?>">
+                                        <div class="thumbnail-event" style="border-top:1px solid #203558;border-left:1px solid #dddddd;border-right:1px solid #dddddd;">
+                                            <img class="img-responsive" style="width:100%;height:auto;" src="<?php echo $value->event_image; ?>" alt="">
+                                            <div class="text-back">
+                                                 <div class="text">
 
-                                                <h3> <?php echo $value->headline; ?></h3>
-                                                <p><?php echo strip_tags(substr($value->event_detail_front, 0, 600)); ?></p>
+                                                    <h3> <?php echo $value->headline; ?></h3>
+                                                    <p><?php echo strip_tags(mb_substr($value->event_detail_front,0,252, "utf-8")); ?></p>
+
+                                                </div>
 
                                             </div>
-
                                         </div>
-
-                                     </div>
+                                     </a>
 <!--                                    single div-->
                                     </div>
                                 

@@ -25,7 +25,14 @@
          <?php foreach ($bdgs_js as $key => $js_file_name): ?>
             <script type="text/javascript" src="<?php echo base_url('resources/js/' . $js_file_name . '.js'); ?>"></script>
         <?php endforeach; ?>
-
+            <script>
+              $(document).ready(function(){
+                   $("#share").jsSocials({
+                        shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+                    });
+              });
+               
+            </script>
 
     </head>
 
