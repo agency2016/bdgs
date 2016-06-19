@@ -45,9 +45,11 @@
                                <!-- Tab panes -->
                                <div class="tab-content">
                                    <div role="tabpanel" class="tab-pane active twocol" id="home">
-                                       <?php if ($about) echo $about->row()->a_desc ;?></div>
+                                         <?php if ($con) echo $con->row()->c_desc ;?>
+                                       </div>
                                       <div role="tabpanel" class="tab-pane twocol" id="profile">
-                                       <?php if ($con) echo $con->row()->c_desc ;?>
+                                      
+                                          <?php if ($about) echo $about->row()->a_desc ;?>
                                       </div>
                                      </div>
                 </div>
